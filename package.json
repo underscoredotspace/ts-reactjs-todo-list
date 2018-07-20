@@ -1,0 +1,22 @@
+{
+  "name": "ts1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/public/index.html",
+  "scripts": {
+    "start": "parcel app/public/index.html",
+    "build": "parcel build app/public/index.html --public-url ./"
+  },
+  "author": "",
+  "license": "CC-BY-4.0",
+  "dependencies": {
+    "parcel": "^1.9.7",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "typescript": "^2.9.2"
+  }
+}
