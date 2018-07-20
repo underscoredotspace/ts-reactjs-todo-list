@@ -1,17 +1,25 @@
 import React from 'react'
-import { ListItems } from '../../types/ListItem'
+import ListItem from './ListItem'
+import { IListItem } from '../../types'
 
 interface ListProps {
-  listItems: ListItems
+  listItems: IListItem[]
+  handleDoneChange: (done: boolean, id: number) => void
 }
 
-const List: React.SFC<ListProps> = ({ listItems = [] }) => {
+const List: React.SFC<ListProps> = ({ handleDoneChange, listItems = [] }) => {
   if (listItems.length === 0) return null
 
   return (
-    <React.Fragment>
-      {listItems.map(listItem => <div>{listItem.text}</div>)}
-    </React.Fragment>
+    <div className="todo-list">
+      {listItems.map(listItem => (
+        <ListItem
+          key={listItem.id}
+          listItem={listItem}
+          handleDoneChange={handleDoneChange}
+        />
+      ))}
+    </div>
   )
 }
 

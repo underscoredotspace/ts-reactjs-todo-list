@@ -20,6 +20,5 @@
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
-  },
-  "include": [".app/src/**/*"]
+  }
 }
