@@ -8,12 +8,20 @@ interface TodoListState {
   todoList: IListItem[]
 }
 
-export default class App extends Component<{}, TodoListState> {
-  constructor(props: {}) {
+interface TodoListProps {
+  storage: {
+    load: () => IListItem[]
+    save: (list: IListItem[]) => boolean
+  }
+}
+
+export default class App extends Component<TodoListProps, TodoListState> {
+  constructor(props: TodoListProps) {
     super(props)
+    // this.props.storage.save([{ id: 1, done: false, text: 'something' }])
 
     this.state = {
-      todoList: [{ id: 1, done: false, text: 'something' }]
+      todoList: props.storage.load()
     }
   }
 
@@ -24,6 +32,15 @@ export default class App extends Component<{}, TodoListState> {
     listItem.done = done
 
     this.setState({ todoList })
+  }
+
+  shouldComponentUpdate({}, nextState: TodoListState) {
+    const saved = this.props.storage.save(nextState.todoList)
+    if (!saved) {
+      console.error('Error saving list!')
+    }
+
+    return saved
   }
 
   render() {

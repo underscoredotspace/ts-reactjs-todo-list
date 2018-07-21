@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { SFC } from 'react'
 import { IListItem } from '../../types'
 import CheckBox from '../CheckBox'
 
+export type HandleDoneChange = (done: boolean, id: number) => void
+
 interface ListItem {
   listItem: IListItem
-  handleDoneChange: (done: boolean, id: number) => void
+  handleDoneChange: HandleDoneChange
 }
 
-const ListItem: React.SFC<ListItem> = ({ listItem, handleDoneChange }) => {
+const ListItem: SFC<ListItem> = ({ listItem, handleDoneChange }) => {
   return (
     <div className="todo-list__item">
       <CheckBox

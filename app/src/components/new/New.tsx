@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { SFC } from 'react'
 
-const NewItem: React.SFC = props => {
+const NewItem: SFC = props => {
   return <div>Hello New</div>
 }
 

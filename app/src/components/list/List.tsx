@@ -1,13 +1,13 @@
-import React from 'react'
-import ListItem from './ListItem'
+import React, { SFC } from 'react'
+import ListItem, { HandleDoneChange } from './ListItem'
 import { IListItem } from '../../types'
 
 interface ListProps {
   listItems: IListItem[]
-  handleDoneChange: (done: boolean, id: number) => void
+  handleDoneChange: HandleDoneChange
 }
 
-const List: React.SFC<ListProps> = ({ handleDoneChange, listItems = [] }) => {
+const List: SFC<ListProps> = ({ handleDoneChange, listItems = [] }) => {
   if (listItems.length === 0) return null
 
   return (
