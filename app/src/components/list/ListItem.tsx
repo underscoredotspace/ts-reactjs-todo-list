@@ -1,25 +1,31 @@
 import React, { SFC } from 'react'
 import { IListItem } from '../../types'
 import CheckBox from '../CheckBox'
+import InputBox from '../InputBox'
 
 export type HandleDoneChange = (done: boolean, id: number) => void
+export type HandleTextChange = (text: string, id: number) => void
 
 interface ListItem {
   listItem: IListItem
   handleDoneChange: HandleDoneChange
+  handleTextChange: HandleTextChange
 }
 
-const ListItem: SFC<ListItem> = ({ listItem, handleDoneChange }) => {
+const ListItem: SFC<ListItem> = ({
+  listItem,
+  handleDoneChange,
+  handleTextChange
+}) => {
   return (
     <div className="todo-list__item">
       <CheckBox
         done={listItem.done}
         handleDoneChange={done => handleDoneChange(done, listItem.id)}
       />
-      <input
-        type="text"
-        value={listItem.text}
-        onChange={e => console.log(e.target.value)}
+      <InputBox
+        text={listItem.text}
+        handleTextChange={text => handleTextChange(text, listItem.id)}
       />
     </div>
   )
