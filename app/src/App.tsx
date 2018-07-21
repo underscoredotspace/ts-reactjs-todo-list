@@ -18,7 +18,11 @@ interface TodoListProps {
 export default class App extends Component<TodoListProps, TodoListState> {
   constructor(props: TodoListProps) {
     super(props)
-    // this.props.storage.save([{ id: 1, done: false, text: 'something' }])
+
+    // this.props.storage.save([
+    //   { id: 1, done: false, text: 'something' },
+    //   { id: 2, done: true, text: 'another thing' }
+    // ])
 
     this.state = {
       todoList: props.storage.load()

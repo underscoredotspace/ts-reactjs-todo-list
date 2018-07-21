@@ -14,7 +14,8 @@ export default class LocalStorage {
     try {
       localStorage.setItem('todoList', JSON.stringify(list))
       return true
-    } catch {
+    } catch (error) {
+      console.error({ localStorage: error })
       return false
     }
   }
