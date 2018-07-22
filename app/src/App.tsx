@@ -4,10 +4,12 @@ import NewItem from './components/new/New'
 import List from './components/list/List'
 import Toolbar from './components/toolbar/Toolbar'
 import { IListItem } from './types'
+import { FilterSelected } from './components/toolbar/Filter'
 
 interface TodoListState {
   newItemText: string
   todoList: IListItem[]
+  filter?: FilterSelected
 }
 
 interface TodoListProps {
@@ -23,12 +25,16 @@ export default class App extends Component<TodoListProps, TodoListState> {
 
     this.state = {
       newItemText: '',
-      todoList: props.storage.load()
+      todoList: props.storage.load(),
+      filter: undefined
     }
   }
 
   handleNewItem = () => {
     let { todoList, newItemText } = this.state
+    newItemText = newItemText.trim()
+    if (newItemText.length === 0) return
+
     todoList.push({ id: uuid().toString(), done: false, text: newItemText })
     newItemText = ''
 
@@ -63,6 +69,10 @@ export default class App extends Component<TodoListProps, TodoListState> {
     this.setState({ todoList })
   }
 
+  filterChange = (filter: object) => {
+    this.setState({ filter })
+  }
+
   shouldComponentUpdate({}, nextState: TodoListState) {
     const saved = this.props.storage.save(nextState.todoList)
     if (!saved) {
@@ -85,8 +95,12 @@ export default class App extends Component<TodoListProps, TodoListState> {
           handleDoneChange={this.handleDoneChange}
           handleTextChange={this.handleTextChange}
           handleDelete={this.handleDelete}
+          filter={this.state.filter}
         />
-        <Toolbar />
+        <Toolbar
+          filterChange={this.filterChange}
+          filterSelected={this.state.filter}
+        />
       </React.Fragment>
     )
   }

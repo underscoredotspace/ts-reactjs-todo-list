@@ -1,0 +1,11 @@
+.filter {
+  button {
+    &:hover {
+      border-color: palevioletred;
+    }
+
+    &.selected {
+      border-color: maroon;
+    }
+  }
+}

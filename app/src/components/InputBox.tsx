@@ -23,6 +23,7 @@ const InputBox: SFC<IInputBoxProps> = ({
       value={text}
       onChange={event => handleTextChange(event.target.value)}
       onKeyDown={event => handleKeyDown(event.key)}
+      placeholder="What needs to be done?"
     />
   )
 }

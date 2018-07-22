@@ -12,7 +12,7 @@ const NewItem: SFC<NewItemProps> = ({
   handleNewItemSubmit,
   handleNewTextChange
 }) => (
-  <div>
+  <div className="new">
     <InputBox
       text={text}
       handleEnterKey={handleNewItemSubmit}

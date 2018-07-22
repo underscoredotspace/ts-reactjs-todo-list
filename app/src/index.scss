@@ -1,0 +1,14 @@
+input,
+button {
+  background-color: white;
+  border: 1px solid white;
+  margin: 0.25rem;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+}
+
+input:focus {
+  border-color: black;
+}
+
+@import './components/toolbar/filter.scss';

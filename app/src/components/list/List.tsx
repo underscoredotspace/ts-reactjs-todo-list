@@ -11,15 +11,23 @@ interface ListProps {
   handleDoneChange: HandleDoneChange
   handleTextChange: HandleTextChange
   handleDelete: HandleDelete
+  filter?: object
 }
 
 const List: SFC<ListProps> = ({
   handleDoneChange,
   handleTextChange,
   handleDelete,
-  listItems = []
+  listItems = [],
+  filter
 }) => {
   if (listItems.length === 0) return null
+
+  if (filter) {
+    listItems = listItems.filter(
+      listItem => listItem[Object.keys(filter)[0]] === Object.values(filter)[0]
+    )
+  }
 
   return (
     <div className="todo-list">
