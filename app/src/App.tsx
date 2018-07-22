@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { v4 as uuid } from 'uuid'
 import NewItem from './components/new/New'
 import List from './components/list/List'
 import Toolbar from './components/toolbar/Toolbar'
@@ -20,11 +21,6 @@ export default class App extends Component<TodoListProps, TodoListState> {
   constructor(props: TodoListProps) {
     super(props)
 
-    // this.props.storage.save([
-    //   { id: 1, done: false, text: 'something' },
-    //   { id: 2, done: true, text: 'another thing' }
-    // ])
-
     this.state = {
       newItemText: '',
       todoList: props.storage.load()
@@ -33,7 +29,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
 
   handleNewItem = () => {
     let { todoList, newItemText } = this.state
-    todoList.push({ id: todoList.length + 1, done: false, text: newItemText })
+    todoList.push({ id: uuid().toString(), done: false, text: newItemText })
     newItemText = ''
 
     this.setState({ todoList, newItemText })
@@ -43,7 +39,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
     this.setState({ newItemText })
   }
 
-  handleDoneChange = (done: boolean, id: number) => {
+  handleDoneChange = (done: boolean, id: string) => {
     const { todoList } = this.state
     const listItem = todoList.find(item => item.id === id)
     if (!listItem) return
@@ -52,7 +48,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
     this.setState({ todoList })
   }
 
-  handleTextChange = (text: string, id: number) => {
+  handleTextChange = (text: string, id: string) => {
     const { todoList } = this.state
     const listItem = todoList.find(item => item.id === id)
     if (!listItem) return
@@ -61,7 +57,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
     this.setState({ todoList })
   }
 
-  handleDelete = (id: number) => {
+  handleDelete = (id: string) => {
     let { todoList } = this.state
     todoList = todoList.filter(listItem => listItem.id !== id)
     this.setState({ todoList })

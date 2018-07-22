@@ -3,9 +3,9 @@ import { IListItem } from '../../types'
 import CheckBox from '../CheckBox'
 import InputBox from '../InputBox'
 
-export type HandleDoneChange = (done: boolean, id: number) => void
-export type HandleTextChange = (text: string, id: number) => void
-export type HandleDelete = (id: number) => void
+export type HandleDoneChange = (done: boolean, id: string) => void
+export type HandleTextChange = (text: string, id: string) => void
+export type HandleDelete = (id: string) => void
 
 interface ListItem {
   listItem: IListItem

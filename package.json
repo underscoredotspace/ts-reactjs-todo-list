@@ -10,9 +10,11 @@
   "author": "",
   "license": "CC-BY-4.0",
   "dependencies": {
+    "@types/uuid": "^3.4.3",
     "parcel": "^1.9.7",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/react": "^16.4.6",
