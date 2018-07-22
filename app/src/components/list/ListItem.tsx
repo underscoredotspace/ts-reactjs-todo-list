@@ -5,17 +5,20 @@ import InputBox from '../InputBox'
 
 export type HandleDoneChange = (done: boolean, id: number) => void
 export type HandleTextChange = (text: string, id: number) => void
+export type HandleDelete = (id: number) => void
 
 interface ListItem {
   listItem: IListItem
   handleDoneChange: HandleDoneChange
   handleTextChange: HandleTextChange
+  handleDelete: HandleDelete
 }
 
 const ListItem: SFC<ListItem> = ({
   listItem,
   handleDoneChange,
-  handleTextChange
+  handleTextChange,
+  handleDelete
 }) => {
   return (
     <div className="todo-list__item">
@@ -27,6 +30,9 @@ const ListItem: SFC<ListItem> = ({
         text={listItem.text}
         handleTextChange={text => handleTextChange(text, listItem.id)}
       />
+      <button className="delete-item" onClick={() => handleDelete(listItem.id)}>
+        X
+      </button>
     </div>
   )
 }

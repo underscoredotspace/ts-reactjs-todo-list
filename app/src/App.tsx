@@ -61,6 +61,12 @@ export default class App extends Component<TodoListProps, TodoListState> {
     this.setState({ todoList })
   }
 
+  handleDelete = (id: number) => {
+    let { todoList } = this.state
+    todoList = todoList.filter(listItem => listItem.id !== id)
+    this.setState({ todoList })
+  }
+
   shouldComponentUpdate({}, nextState: TodoListState) {
     const saved = this.props.storage.save(nextState.todoList)
     if (!saved) {
@@ -82,6 +88,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
           listItems={this.state.todoList}
           handleDoneChange={this.handleDoneChange}
           handleTextChange={this.handleTextChange}
+          handleDelete={this.handleDelete}
         />
         <Toolbar />
       </React.Fragment>
