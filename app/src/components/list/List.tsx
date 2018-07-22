@@ -17,14 +17,17 @@ const List: SFC<ListProps> = ({
 
   return (
     <div className="todo-list">
-      {listItems.map(listItem => (
-        <ListItem
-          key={listItem.id}
-          listItem={listItem}
-          handleDoneChange={handleDoneChange}
-          handleTextChange={handleTextChange}
-        />
-      ))}
+      {listItems
+        .slice()
+        .reverse()
+        .map(listItem => (
+          <ListItem
+            key={listItem.id}
+            listItem={listItem}
+            handleDoneChange={handleDoneChange}
+            handleTextChange={handleTextChange}
+          />
+        ))}
     </div>
   )
 }

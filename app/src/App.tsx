@@ -5,6 +5,7 @@ import Toolbar from './components/toolbar/Toolbar'
 import { IListItem } from './types'
 
 interface TodoListState {
+  newItemText: string
   todoList: IListItem[]
 }
 
@@ -25,8 +26,21 @@ export default class App extends Component<TodoListProps, TodoListState> {
     // ])
 
     this.state = {
+      newItemText: '',
       todoList: props.storage.load()
     }
+  }
+
+  handleNewItem = () => {
+    let { todoList, newItemText } = this.state
+    todoList.push({ id: todoList.length + 1, done: false, text: newItemText })
+    newItemText = ''
+
+    this.setState({ todoList, newItemText })
+  }
+
+  handleNewTextChange = (newItemText: string) => {
+    this.setState({ newItemText })
   }
 
   handleDoneChange = (done: boolean, id: number) => {
@@ -59,7 +73,11 @@ export default class App extends Component<TodoListProps, TodoListState> {
   render() {
     return (
       <React.Fragment>
-        <NewItem />
+        <NewItem
+          text={this.state.newItemText}
+          handleNewItemSubmit={this.handleNewItem}
+          handleNewTextChange={this.handleNewTextChange}
+        />
         <List
           listItems={this.state.todoList}
           handleDoneChange={this.handleDoneChange}

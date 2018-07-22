@@ -1,16 +1,30 @@
 import React, { SFC } from 'react'
 
 interface IInputBoxProps {
-  text: string
+  text?: string
+  handleEnterKey?: () => void
   handleTextChange: (text: string) => void
 }
 
-const InputBox: SFC<IInputBoxProps> = ({ text, handleTextChange }) => (
-  <input
-    type="text"
-    value={text}
-    onChange={event => handleTextChange(event.target.value)}
-  />
-)
+const InputBox: SFC<IInputBoxProps> = ({
+  text = '',
+  handleTextChange,
+  handleEnterKey = () => {}
+}) => {
+  function handleKeyDown(key: string) {
+    if (key === 'Enter') {
+      handleEnterKey()
+    }
+  }
+
+  return (
+    <input
+      type="text"
+      value={text}
+      onChange={event => handleTextChange(event.target.value)}
+      onKeyDown={event => handleKeyDown(event.key)}
+    />
+  )
+}
 
 export default InputBox
