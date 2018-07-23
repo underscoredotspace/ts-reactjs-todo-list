@@ -73,6 +73,12 @@ export default class App extends Component<TodoListProps, TodoListState> {
     this.setState({ filter })
   }
 
+  deleteCompleted = () => {
+    let { todoList } = this.state
+    todoList = todoList.filter(listItem => listItem.done === false)
+    this.setState({ todoList })
+  }
+
   shouldComponentUpdate({}, nextState: TodoListState) {
     const saved = this.props.storage.save(nextState.todoList)
     if (!saved) {
@@ -98,8 +104,17 @@ export default class App extends Component<TodoListProps, TodoListState> {
           filter={this.state.filter}
         />
         <Toolbar
+          listLength={
+            this.state.todoList.filter(listItem => listItem.done === false)
+              .length
+          }
+          completed={
+            this.state.todoList.filter(listItem => listItem.done === true)
+              .length
+          }
           filterChange={this.filterChange}
           filterSelected={this.state.filter}
+          clearCompleted={this.deleteCompleted}
         />
       </React.Fragment>
     )

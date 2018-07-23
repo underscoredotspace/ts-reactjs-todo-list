@@ -30,7 +30,7 @@ const List: SFC<ListProps> = ({
   }
 
   return (
-    <div className="todo-list">
+    <ul className="todo-list">
       {listItems
         .slice()
         .reverse()
@@ -43,7 +43,7 @@ const List: SFC<ListProps> = ({
             handleDelete={handleDelete}
           />
         ))}
-    </div>
+    </ul>
   )
 }
 

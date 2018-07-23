@@ -21,7 +21,7 @@ const ListItem: SFC<ListItem> = ({
   handleDelete
 }) => {
   return (
-    <div className="todo-list__item">
+    <li className="todo-list__item">
       <CheckBox
         done={listItem.done}
         handleDoneChange={done => handleDoneChange(done, listItem.id)}
@@ -33,7 +33,7 @@ const ListItem: SFC<ListItem> = ({
       <button className="delete-item" onClick={() => handleDelete(listItem.id)}>
         X
       </button>
-    </div>
+    </li>
   )
 }
 
