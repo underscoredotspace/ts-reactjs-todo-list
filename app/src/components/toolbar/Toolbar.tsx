@@ -2,6 +2,7 @@ import React, { SFC } from 'react'
 import Filter, { FilterChange, FilterSelected } from './Filter'
 import ClearCompleted, { HandleClearCompleted } from './ClearCompleted'
 import Counter from './Counter'
+import './toolbar.scss'
 
 interface ToolbarProps {
   filterChange: FilterChange

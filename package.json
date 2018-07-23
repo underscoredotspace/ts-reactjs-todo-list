@@ -7,8 +7,12 @@
     "start": "parcel app/public/index.html",
     "build": "parcel build app/public/index.html --public-url ./"
   },
-  "author": "",
+  "author": "Colin M Tindle <ampersand@underscore.space>  (https://messy.cloud)",
   "license": "CC-BY-4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/underscoredotspace/ts-reactjs-todo-list.git"
+  },
   "dependencies": {
     "@types/uuid": "^3.4.3",
     "parcel": "^1.9.7",

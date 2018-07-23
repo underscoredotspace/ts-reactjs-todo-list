@@ -1,4 +1,5 @@
 import React, { SFC } from 'react'
+import './input-box.scss'
 
 interface IInputBoxProps {
   text?: string
@@ -19,6 +20,7 @@ const InputBox: SFC<IInputBoxProps> = ({
 
   return (
     <input
+      className="input-box"
       type="text"
       value={text}
       onChange={event => handleTextChange(event.target.value)}

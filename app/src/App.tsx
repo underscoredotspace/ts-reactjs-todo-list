@@ -90,7 +90,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="todo-app">
         <NewItem
           text={this.state.newItemText}
           handleNewItemSubmit={this.handleNewItem}
@@ -116,7 +116,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
           filterSelected={this.state.filter}
           clearCompleted={this.deleteCompleted}
         />
-      </React.Fragment>
+      </div>
     )
   }
 }

@@ -1,4 +1,5 @@
 import React, { SFC } from 'react'
+import './filter.scss'
 
 export type FilterChange = (filter?: object) => void
 export type FilterSelected = { done?: boolean } | undefined

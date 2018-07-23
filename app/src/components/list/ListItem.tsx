@@ -2,6 +2,7 @@ import React, { SFC } from 'react'
 import { IListItem } from '../../types'
 import CheckBox from '../CheckBox'
 import InputBox from '../InputBox'
+import './list-item.scss'
 
 export type HandleDoneChange = (done: boolean, id: string) => void
 export type HandleTextChange = (text: string, id: string) => void
