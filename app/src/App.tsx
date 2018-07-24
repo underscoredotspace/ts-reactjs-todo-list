@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { v4 as uuid } from 'uuid'
-import NewItem from './components/new/New'
+import NewItem from './components/newItem/NewItem'
 import List from './components/list/List'
 import Toolbar from './components/toolbar/Toolbar'
 import { IListItem } from './types'
