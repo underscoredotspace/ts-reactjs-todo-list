@@ -1,24 +1,43 @@
-import React, { SFC } from 'react'
+import React, { Component } from 'react'
 import InputBox from '../InputBox'
 
-interface NewItemProps {
-  text: string
-  handleNewItemSubmit: () => void
-  handleNewTextChange: (text: string) => void
+interface INewItemProps {
+  handleNewItemSubmit: (text: string) => void
 }
 
-const NewItem: SFC<NewItemProps> = ({
-  text,
-  handleNewItemSubmit,
-  handleNewTextChange
-}) => (
-  <div className="new">
-    <InputBox
-      text={text}
-      handleEnterKey={handleNewItemSubmit}
-      handleTextChange={handleNewTextChange}
-    />
-  </div>
-)
+interface INewItemState {
+  text: string
+}
 
-export default NewItem
+export default class NewItem extends Component<INewItemProps, INewItemState> {
+  constructor(props: INewItemProps) {
+    super(props)
+    this.state = {
+      text: ''
+    }
+  }
+
+  handleEnterKey = (text: string) => {
+    const { handleNewItemSubmit } = this.props
+    handleNewItemSubmit(text)
+    this.setState({ text: '' })
+  }
+
+  handleTextChange = (text: string) => {
+    this.setState({ text })
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="new">
+          <InputBox
+            text={this.state.text}
+            handleEnterKey={this.handleEnterKey}
+            handleTextChange={this.handleTextChange}
+          />
+        </div>
+      </div>
+    )
+  }
+}

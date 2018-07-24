@@ -2,19 +2,19 @@ import React, { SFC } from 'react'
 import './input-box.scss'
 
 interface IInputBoxProps {
-  text?: string
-  handleEnterKey?: () => void
-  handleTextChange: (text: string) => void
+  text: string
+  handleEnterKey?: (text: string) => void
+  handleTextChange?: (text: string) => void
 }
 
 const InputBox: SFC<IInputBoxProps> = ({
-  text = '',
-  handleTextChange,
+  text,
+  handleTextChange = () => {},
   handleEnterKey = () => {}
 }) => {
-  function handleKeyDown(key: string) {
+  function handleKeyDown(key: string, text: string) {
     if (key === 'Enter') {
-      handleEnterKey()
+      handleEnterKey(text)
     }
   }
 
@@ -24,7 +24,7 @@ const InputBox: SFC<IInputBoxProps> = ({
       type="text"
       value={text}
       onChange={event => handleTextChange(event.target.value)}
-      onKeyDown={event => handleKeyDown(event.key)}
+      onKeyDown={event => handleKeyDown(event.key, text)}
       placeholder="What needs to be done?"
     />
   )

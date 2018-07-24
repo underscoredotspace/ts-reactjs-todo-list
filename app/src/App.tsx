@@ -7,7 +7,6 @@ import { IListItem } from './types'
 import { FilterSelected } from './components/toolbar/Filter'
 
 interface TodoListState {
-  newItemText: string
   todoList: IListItem[]
   filter?: FilterSelected
 }
@@ -24,25 +23,19 @@ export default class App extends Component<TodoListProps, TodoListState> {
     super(props)
 
     this.state = {
-      newItemText: '',
       todoList: props.storage.load(),
       filter: undefined
     }
   }
 
-  handleNewItem = () => {
-    let { todoList, newItemText } = this.state
+  handleNewItem = (newItemText: string) => {
+    let { todoList } = this.state
     newItemText = newItemText.trim()
     if (newItemText.length === 0) return
 
     todoList.push({ id: uuid().toString(), done: false, text: newItemText })
-    newItemText = ''
 
-    this.setState({ todoList, newItemText })
-  }
-
-  handleNewTextChange = (newItemText: string) => {
-    this.setState({ newItemText })
+    this.setState({ todoList })
   }
 
   handleDoneChange = (done: boolean, id: string) => {
@@ -91,11 +84,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
   render() {
     return (
       <div className="todo-app">
-        <NewItem
-          text={this.state.newItemText}
-          handleNewItemSubmit={this.handleNewItem}
-          handleNewTextChange={this.handleNewTextChange}
-        />
+        <NewItem handleNewItemSubmit={this.handleNewItem} />
         <List
           listItems={this.state.todoList}
           handleDoneChange={this.handleDoneChange}
@@ -104,10 +93,7 @@ export default class App extends Component<TodoListProps, TodoListState> {
           filter={this.state.filter}
         />
         <Toolbar
-          listLength={
-            this.state.todoList.filter(listItem => listItem.done === false)
-              .length
-          }
+          listLength={this.state.todoList.length}
           completed={
             this.state.todoList.filter(listItem => listItem.done === true)
               .length
