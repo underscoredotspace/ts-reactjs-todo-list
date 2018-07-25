@@ -1,4 +1,4 @@
-import { IListItem } from './types'
+import { IListItem } from './components/list/ListItem'
 
 export default class LocalStorage {
   load(): IListItem[] {
