@@ -11,12 +11,13 @@ const ClearCompleted: SFC<ClearCompletedPops> = ({
   completed,
   handleClearCompleted
 }) => {
-  if (completed === 0) return null
-
   return (
     <div className="clear-completed">
-      <button onClick={handleClearCompleted}>
-        Delete {completed} completed items
+      <button
+        onClick={handleClearCompleted}
+        disabled={completed > 0 ? false : true}
+      >
+        Delete {completed} completed item{completed !== 1 ? 's' : ''}
       </button>
     </div>
   )

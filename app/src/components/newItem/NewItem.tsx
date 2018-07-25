@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import InputBox from '../InputBox'
+import './new-item.scss'
 
 interface INewItemProps {
   handleNewItemSubmit: (text: string) => void
@@ -30,7 +31,7 @@ export default class NewItem extends Component<INewItemProps, INewItemState> {
   render() {
     return (
       <div>
-        <div className="new">
+        <div className="new-item">
           <InputBox
             text={this.state.text}
             handleEnterKey={this.handleEnterKey}
