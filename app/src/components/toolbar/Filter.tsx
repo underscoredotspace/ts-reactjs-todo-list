@@ -1,12 +1,12 @@
 import React, { SFC } from 'react'
 import './filter.scss'
 
-export type FilterChange = (filter?: object) => void
+export type FilterChange = (filter: object) => void
 export type FilterSelected = { done?: boolean } | undefined
 
 interface FilterProps {
   filterChange: FilterChange
-  filterSelected?: FilterSelected
+  filterSelected: FilterSelected
 }
 
 const Filter: SFC<FilterProps> = ({ filterChange, filterSelected }) => {
@@ -14,7 +14,7 @@ const Filter: SFC<FilterProps> = ({ filterChange, filterSelected }) => {
     <div className="filter">
       <button
         className={`${!filterSelected ? 'selected' : ''}`}
-        onClick={() => filterChange()}
+        onClick={() => filterChange({})}
       >
         All
       </button>

@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 import NewItem from './components/newItem/NewItem'
 import List from './components/list/List'
 import Toolbar from './components/toolbar/Toolbar'
-import { IListItem } from './types'
+import { IListItem } from './components/list/ListItem'
 import { FilterSelected } from './components/toolbar/Filter'
 
 interface TodoListState {

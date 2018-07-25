@@ -1,13 +1,15 @@
 import React, { SFC } from 'react'
 
 interface CounterPops {
-  listLength: number
+  todo: number
 }
 
-const Counter: SFC<CounterPops> = ({ listLength }) => {
-  if (listLength === 0) return null
-
-  return <div className="counter">{listLength} items left</div>
+const Counter: SFC<CounterPops> = ({ todo }) => {
+  return (
+    <div className="counter">
+      {todo} item{todo !== 1 ? 's' : ''} left
+    </div>
+  )
 }
 
 export default Counter

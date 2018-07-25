@@ -2,9 +2,9 @@ import React, { SFC } from 'react'
 import ListItem, {
   HandleDoneChange,
   HandleTextChange,
-  HandleDelete
+  HandleDelete,
+  IListItem
 } from './ListItem'
-import { IListItem } from '../../types'
 
 interface ListProps {
   listItems: IListItem[]

@@ -23,7 +23,7 @@ const Toolbar: SFC<ToolbarProps> = ({
 
   return (
     <div className="toolbar">
-      <Counter listLength={listLength} />
+      <Counter todo={listLength - completed} />
       <Filter filterChange={filterChange} filterSelected={filterSelected} />
       <ClearCompleted
         completed={completed}
