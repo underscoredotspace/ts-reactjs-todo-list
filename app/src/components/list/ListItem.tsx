@@ -27,7 +27,7 @@ const ListItem: SFC<ListItem> = ({
   handleDelete
 }) => {
   return (
-    <li className="todo-list__item">
+    <li className={`todo-list__item${listItem.done ? ' done' : ''}`}>
       <CheckBox
         done={listItem.done}
         handleDoneChange={done => handleDoneChange(done, listItem.id)}

@@ -5,4 +5,9 @@ li {
   .input-box {
     width: 100%;
   }
+
+  &.done .input-box {
+    color: gray;
+    text-decoration: line-through;
+  }
 }

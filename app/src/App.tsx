@@ -8,7 +8,7 @@ import { FilterSelected } from './components/toolbar/Filter'
 
 interface TodoListState {
   todoList: IListItem[]
-  filter?: FilterSelected
+  filter: FilterSelected
 }
 
 interface TodoListProps {
