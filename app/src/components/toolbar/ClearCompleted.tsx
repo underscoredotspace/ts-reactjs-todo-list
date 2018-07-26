@@ -2,12 +2,12 @@ import React, { SFC } from 'react'
 
 export type HandleClearCompleted = () => void
 
-interface ClearCompletedPops {
+interface ClearCompletedProps {
   completed: number
   handleClearCompleted: HandleClearCompleted
 }
 
-const ClearCompleted: SFC<ClearCompletedPops> = ({
+const ClearCompleted: SFC<ClearCompletedProps> = ({
   completed,
   handleClearCompleted
 }) => {
